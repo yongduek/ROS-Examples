@@ -50,6 +50,7 @@ fit_1 <- stan_glm(y ~ ., prior=normal(0, 10, autoscale=FALSE),
 #' the diagnostic recognizes this with many high Pareto k values. We
 #' can run slower, but more robust K-fold-CV
 kfold_1 <- kfold(fit_1)
+print(kfold1)
 
 #' #### An alternative weakly informative prior<br>
 #' The regularized horseshoe prior `hs()` is weakly informative,
@@ -73,3 +74,6 @@ loo_compare(kfold_1,kfold_2)
 #' difference between the models. The Pareto k diagnostic correctly
 #' identified the problem, and more robust K-fold-CV shows that by
 #' using a better prior we can get better predictions.
+
+
+plot(rnorm(100), col='blue')

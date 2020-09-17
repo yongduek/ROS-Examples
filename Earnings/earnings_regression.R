@@ -38,6 +38,9 @@ SEED <- 7783
 
 #' #### Load data
 earnings <- read.csv(root("Earnings/data","earnings.csv"))
+#
+earnings <- read.csv("ROS-Examples/Earnings/data/earnings.csv")
+
 head(earnings)
 n <- nrow(earnings)
 height_jitter_add <- runif(n, -.2, .2)
@@ -288,7 +291,8 @@ ppc_0 <- ppc_dens_overlay(earnings$earn, yrep_0[sims_display,]) +
 yrep_log_1 <- posterior_predict(logmodel_1)
 n_sims <- nrow(yrep_log_1)
 sims_display <- sample(n_sims, 100)
-ppc_log_1 <- ppc_dens_overlay(log(earnings$earn[earnings$earn>0]), yrep_log_1[sims_display,]) +
+ppc_log_1 <- ppc_dens_overlay(log(earnings$earn[earnings$earn>0]), 
+                              yrep_log_1[sims_display,]) +
     theme(axis.line.y = element_blank())
 bpg <- bayesplot_grid(
   ppc_0, ppc_log_1,
